@@ -1,13 +1,29 @@
+import csv
+import numpy
+
 file = open('input.txt', "r")
+vertices = []
+for line in file.readlines():
+    vertices.append(numpy.array([int(item) for item in line.split()]))
+
+matrix = [[0] * len(vertices) for i in range(len(vertices))]
+count = 0
+for vertex in vertices:
+    for i in range(count + 1, len(vertices)):
+        distance = sum([abs(item) for item in (vertex - vertices[i])])
+        matrix[count][i], matrix[i][count] = distance, distance
+    count += 1
+
+with open("matrix.csv", "w", newline='') as csv_file:
+    writer = csv.writer(csv_file, delimiter=";")
+    for line in matrix:
+        writer.writerow(line)
+print("Сoдержимое матрицы находится в файле matrix.csv")
 
 core = [0]
 edges = []
-matrix = []
 remaining = []
 msd = 0
-
-for line in file.readlines():
-    matrix.append([int(item) for item in line.split()])
 
 for i in range(1, len(matrix)):
     remaining.append(i)
