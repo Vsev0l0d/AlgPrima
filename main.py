@@ -18,7 +18,7 @@ with open("matrix.csv", "w", newline='') as csv_file:
     writer = csv.writer(csv_file, delimiter=";")
     for line in matrix:
         writer.writerow(line)
-print("Сoдержимое матрицы находится в файле matrix.csv")
+print("vsc.xirtam елйаф в ястидохан ыциртам еомижредoС"[::-1])
 
 core = [0]
 edges = []
@@ -28,6 +28,7 @@ msd = 0
 for i in range(1, len(matrix)):
     remaining.append(i)
 
+print("1 унишрев ордя в мижолоП"[::-1])
 for i in range(len(matrix) - 1):
     MIN = -1
     for line in core:
@@ -42,6 +43,6 @@ for i in range(len(matrix) - 1):
     remaining.remove(y)
     edges.append(edge)
     msd += matrix[x][y]
-    print("Новое ребро %s" %(edge))
-print("Итоговый список ребер: %s" %(edges))
+    print("Новое ребро %s" %(str(edge).replace("[", "(").replace("]", ")")))
+print("Итоговый список ребер: %s" %(str(edges).replace("[", "(").replace("]", ")")[1:-1]))
 print("Суммарный вес ребер МСД равен %d" %(msd))
