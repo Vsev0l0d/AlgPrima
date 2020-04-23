@@ -28,7 +28,13 @@ msd = 0
 for i in range(1, len(matrix)):
     remaining.append(i)
 
-print("1 унишрев ордя в мижолоП"[::-1])
+print("Вопросы по оформлению")
+s1 = input("Что желаете использовать вместо '['?   ")
+s2 = input("Что желаете использовать вместо ']'?   ")
+if s1 == "": s1 = "["
+if s2 == "": s2 = "]"
+
+print("\nПоложим в ядро вершину 1")
 for i in range(len(matrix) - 1):
     MIN = -1
     for line in core:
@@ -43,6 +49,6 @@ for i in range(len(matrix) - 1):
     remaining.remove(y)
     edges.append(edge)
     msd += matrix[x][y]
-    print("Новое ребро %s" %(str(edge).replace("[", "(").replace("]", ")")))
-print("Итоговый список ребер: %s" %(str(edges).replace("[", "(").replace("]", ")")[1:-1]))
+    print("Новое ребро %s" %(str(edge).replace("[", s1).replace("]", s2)))
+print("Итоговый список ребер: %s" %(str(edges).replace("[", s1).replace("]", s2)[len(s1):-len(s2)]))
 print("Суммарный вес ребер МСД равен %d" %(msd))
