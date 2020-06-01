@@ -45,6 +45,7 @@ for i in range(len(matrix) - 1):
                 y = column
                 x = line
     core.append(y)
+    core.sort()
     print("Ближайшая к ядру вершина %d. Подсоединяем ее" %(y + 1))
     remaining.remove(y)
     edges.append(edge)
